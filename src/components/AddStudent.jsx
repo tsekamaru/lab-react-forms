@@ -1,19 +1,12 @@
 import { useState } from "react";
 
 function AddStudent({ addStudent }) {
-  const [studentInput, setStudentInput] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    program: "",
-    image: "",
-    graduationYear: "",
-    graduated: false,
-  });
+  const [studentInput, setStudentInput] = useState({});
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    setStudentInput({ ...studentInput, [e.target.name]: value });
+    const { name, value, type, checked } = e.target;
+    const inputValue = type === "checkbox" ? checked : value;
+    setStudentInput({ ...studentInput, [name]: inputValue });
   };
 
   const handleSubmit = (e) => {
